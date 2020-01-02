@@ -1,0 +1,18 @@
+apiVersion: v1kind: Service
+metadata:
+  labels:
+    name: ping
+  name: ping
+  namespace: ping
+spec:
+  type: NodePort
+  ports:
+  - name: http
+    nodePort: 31337
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    name: ping
+    app: demo
+    role: frontend
